@@ -1,42 +1,25 @@
 import { useState } from "react";
 import "./App.css";
-import Form from "./components/Form";
+import FormGeneralInfo from "./components/FormGeneralInfo";
 
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [generalInfo, setGeneralInfo] = useState({
-    name: "",
-    email: "",
-    phoneNumber: "",
-    submitted: false,
+  const [person, setPerson] = useState({
+    name: "Example Examplify Me",
+    email: "example@examplify.me",
+    phoneNumber: "01010101010",
   });
 
-  function handleSubmitGeneral(e) {
-    e.preventDefault();
-    setGeneralInfo((current) => {
+  function getPerson(name, email, phoneNumber) {
+    setPerson((current) => {
       return {
         name: name,
         email: email,
         phoneNumber: phoneNumber,
-        submitted: true,
       };
     });
   }
 
-  console.log(generalInfo);
-
-  function toggleSubmit() {
-    setGeneralInfo((currentInfo) => {
-      return {
-        ...currentInfo,
-        submitted: false,
-      };
-    });
-  }
-
-  console.log(generalInfo);
+  console.log(person);
   return (
     <>
       <header>
@@ -44,58 +27,10 @@ function App() {
       </header>
       <main>
         <div className="get-info-container">
-          <form onSubmit={(e) => handleSubmitGeneral(e)}>
-            <h1>General information</h1>
-            {generalInfo.submitted ? (
-              <button onClick={(e) => toggleSubmit()}>Edit</button>
-            ) : (
-              <>
-                <label>
-                  Full name:
-                  <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </label>
-                <label>
-                  Email:
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </label>
-                <label>
-                  Phone number:
-                  <input
-                    type="tel"
-                    value={phoneNumber}
-                    onChange={(e) => setPhoneNumber(e.target.value)}
-                  />
-                </label>
-                <button>Submit</button>
-              </>
-            )}
-          </form>
+          <FormGeneralInfo onSubmit={getPerson}></FormGeneralInfo>
+
           <form>
-            <h1>Educational Experience</h1>
-            <label>
-              School name:
-              <input type="text" />
-            </label>
-            <label>
-              Title of study:
-              <input type="text" />
-            </label>
-            <label>
-              Date of study:
-              <input type="text" />
-            </label>
-            <button>Submit</button>
-          </form>
-          <h1>Practical Experience</h1>
-          <form>
+            <h1>Practical Experience</h1>
             <label>
               Company name:
               <input type="text" />
@@ -121,9 +56,9 @@ function App() {
         <div className="display-info-container">
           <div className="general-information">
             <h1>General information</h1>
-            <p>Name: Bernardo Miguel Moreira Guerreiro</p>
-            <p>email: bernardoguerreiro@gmail.com</p>
-            <p>Phone number: 912828919</p>
+            <p>Name: {person.name}</p>
+            <p>Email: {person.email}</p>
+            <p>Phone number: {person.phoneNumber}</p>
           </div>
           <div className="educational-experiences">
             <h1>Educational Experiences</h1>
