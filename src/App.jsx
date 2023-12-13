@@ -4,12 +4,23 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FormGeneralInfo from "./components/FormGeneralInfo";
 import FormEducationExp from "./components/FormEducationalExp";
+import FormPracticalExp from "./components/FormPracticalExp";
+import InfoDisplay from "./components/InfoDisplay";
 
 function App() {
   const [person, setPerson] = useState({
     name: "Example Examplify Me",
     email: "example@examplify.me",
     phoneNumber: "01010101010",
+    schoolName: "University Example",
+    studyTitle: "Examplition",
+    studyDate: "ex-am-ple",
+    companyName: "Inc Example",
+    positionTitle: "Example Manager",
+    responsabilities:
+      "Example responsibility, exemplifying expertise in handling diverse tasks. Exceptional problem-solving, ensuring exemplary outcomes. Effectively executing projects, setting an example for team collaboration. Exemplary communication, fostering a positive work environment. Exceptional time management, an example for meeting tight deadlines. Consistently exceeding expectations, an example of dedication and excellence. Embracing challenges, setting an example of adaptability. Ensuring quality work, an example of meticulous attention to detail. Exemplifying leadership, guiding the team towards success. Expertly managing resources, setting an example for efficiency. Proactively identifying opportunities, an example of strategic thinking. Maintaining professionalism, setting an example for workplace conduct. Exceptional organization skills, an example of structured work approach. Leading by example, fostering a culture of continuous improvement. Expertly navigating complexities, an example of resilience and agility.",
+    startDate: "ex-am-ple",
+    endDate: "ex-am-ple",
   });
 
   function getGeneralInformation(name, email, phoneNumber) {
@@ -34,6 +45,25 @@ function App() {
     });
   }
 
+  function getPracticalExperience(
+    companyName,
+    positionTitle,
+    responsabilities,
+    startDate,
+    endDate
+  ) {
+    setPerson((current) => {
+      return {
+        ...current,
+        companyName: companyName,
+        positionTitle: positionTitle,
+        responsabilities: responsabilities,
+        startDate: startDate,
+        endDate: endDate,
+      };
+    });
+  }
+
   return (
     <>
       <header>
@@ -45,52 +75,12 @@ function App() {
           <FormEducationExp
             onSubmit={getEducationalExperience}
           ></FormEducationExp>
-          <form>
-            <h1>Practical Experience</h1>
-
-            <label>
-              Company name:
-              <input type="text" />
-            </label>
-            <label>
-              Position title:
-              <input type="text" />
-            </label>
-            <label>
-              Main responsabilities of your job:
-              <textarea name="" id="" cols="30" rows="10"></textarea>
-            </label>
-            <label>
-              Started date:
-              <input type="date" />
-            </label>
-            <label>
-              End date:
-              <input type="date" />
-            </label>
-          </form>
+          <FormPracticalExp
+            onSubmit={getPracticalExperience}
+          ></FormPracticalExp>
         </div>
         <div className="display-info-container">
-          <div className="general-information">
-            <h1>General information</h1>
-            <p>Name: {person.name}</p>
-            <p>Email: {person.email}</p>
-            <p>Phone number: {person.phoneNumber}</p>
-          </div>
-          <div className="educational-experiences">
-            <h1>Educational Experiences</h1>
-            <p>School: {person.schoolName}</p>
-            <p>Title of Study: {person.studyTitle}</p>
-            <p>Date of study: {person.studyDate}</p>
-            <p></p>
-          </div>
-          <div className="practical-experience">
-            <h1>Practical Experience</h1>
-            <p>Company Name: Boa Vista</p>
-            <p>Position title: Recepcionist</p>
-            <p>Started Date: 22/21/1111</p>
-            <p>Finish Date: 22/22/1111</p>
-          </div>
+          <InfoDisplay person={person}></InfoDisplay>
         </div>
       </main>
     </>
