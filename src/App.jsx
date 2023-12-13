@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "./App.css";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import FormGeneralInfo from "./components/FormGeneralInfo";
+import FormEducationExp from "./components/FormEducationalExp";
 
 function App() {
   const [person, setPerson] = useState({
@@ -9,9 +12,10 @@ function App() {
     phoneNumber: "01010101010",
   });
 
-  function getPerson(name, email, phoneNumber) {
+  function getGeneralInformation(name, email, phoneNumber) {
     setPerson((current) => {
       return {
+        ...current,
         name: name,
         email: email,
         phoneNumber: phoneNumber,
@@ -19,7 +23,17 @@ function App() {
     });
   }
 
-  console.log(person);
+  function getEducationalExperience(schoolName, studyTitle, studyDate) {
+    setPerson((current) => {
+      return {
+        ...current,
+        schoolName: schoolName,
+        studyTitle: studyTitle,
+        studyDate: studyDate,
+      };
+    });
+  }
+
   return (
     <>
       <header>
@@ -27,10 +41,13 @@ function App() {
       </header>
       <main>
         <div className="get-info-container">
-          <FormGeneralInfo onSubmit={getPerson}></FormGeneralInfo>
-
+          <FormGeneralInfo onSubmit={getGeneralInformation}></FormGeneralInfo>
+          <FormEducationExp
+            onSubmit={getEducationalExperience}
+          ></FormEducationExp>
           <form>
             <h1>Practical Experience</h1>
+
             <label>
               Company name:
               <input type="text" />
@@ -62,9 +79,9 @@ function App() {
           </div>
           <div className="educational-experiences">
             <h1>Educational Experiences</h1>
-            <p>School: Escola Julio Dantas</p>
-            <p>Title of Study: Tecnico em turismo</p>
-            <p>Date of study: 29/2/2111</p>
+            <p>School: {person.schoolName}</p>
+            <p>Title of Study: {person.studyTitle}</p>
+            <p>Date of study: {person.studyDate}</p>
             <p></p>
           </div>
           <div className="practical-experience">
