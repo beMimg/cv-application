@@ -1,25 +1,60 @@
+import TitleAndDescriptiption from "./TitleAndDescription";
+
 export default function InfoDisplay({ person }) {
   return (
     <>
-      <div className="general-information">
+      <div className="section">
         <h1>General information</h1>
-        <p>Name: {person.name}</p>
-        <p>Email: {person.email}</p>
-        <p>Phone number: {person.phoneNumber}</p>
+        <TitleAndDescriptiption
+          desc={"Name"}
+          person={person.name}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc="Email"
+          person={person.email}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc={"Phone"}
+          person={person.phoneNumber}
+        ></TitleAndDescriptiption>
       </div>
-      <div className="educational-experiences">
+      <div className="section">
         <h1>Educational Experiences</h1>
-        <p>School: {person.schoolName}</p>
-        <p>Title of Study: {person.studyTitle}</p>
-        <p>Date of study: {person.studyDate}</p>
-        <p></p>
+        <TitleAndDescriptiption
+          desc="School"
+          person={person.schoolName}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc={"Study title"}
+          person={person.studyTitle}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc={"Study Conclusion"}
+          person={person.studyDate}
+        ></TitleAndDescriptiption>
       </div>
-      <div className="practical-experience">
+      <div className="section">
         <h1>Practical Experience</h1>
-        <p>Company Name: {person.companyName}</p>
-        <p>Position title: {person.positionTitle}</p>
-        <p>Started Date: {person.startDate}</p>
-        <p>Finish Date: {person.endDate}</p>
+        <TitleAndDescriptiption
+          desc={"Company Name"}
+          person={person.companyName}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc={"Position Title"}
+          person={person.positionTitle}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc={"Responsabilities"}
+          person={person.responsabilities}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc={"Start"}
+          person={person.startDate}
+        ></TitleAndDescriptiption>
+        <TitleAndDescriptiption
+          desc={"Finish"}
+          person={person.endDate}
+        ></TitleAndDescriptiption>
       </div>
     </>
   );

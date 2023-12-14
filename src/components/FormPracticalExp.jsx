@@ -16,54 +16,58 @@ export default function FormPracticalExp({ onSubmit }) {
 
   return (
     <form onSubmit={(e) => submitInformation(e)}>
-      <h1>Practical Experience</h1>
+      <h1 className="info-container-title">Practical Experience</h1>
       {isSubmit ? (
         <button onClick={(e) => setIsSubmit(false)}>Edit</button>
       ) : (
         <>
-          <label>
-            Company name:
+          <div>
+            <label>Company name:</label>
             <input
               type="text"
               value={companyName}
               onChange={(e) => setCompanyName(e.target.value)}
+              required
             />
-          </label>
-          <label>
-            Position title:
+          </div>
+          <div>
+            <label>Position title:</label>
             <input
               type="text"
               value={positionTitle}
               onChange={(e) => setPositionTitle(e.target.value)}
+              required
             />
-          </label>
-          <label>
-            Main responsabilities of your job:
+          </div>
+          <div>
+            <label>Main responsabilities of your job:</label>
             <textarea
               name=""
               id=""
-              cols="30"
-              rows="10"
               value={responsabilities}
               onChange={(e) => setResponsabilities(e.target.value)}
+              maxLength={70}
+              required
             ></textarea>
-          </label>
-          <label>
-            Started date:
+          </div>
+          <div>
+            <label>Started date:</label>
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
+              required
             />
-          </label>
-          <label>
-            End date:
+          </div>
+          <div>
+            <label>End date:</label>
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
+              required
             />
-          </label>
+          </div>
           <button>Submit</button>
         </>
       )}

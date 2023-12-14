@@ -14,29 +14,33 @@ export default function FormEducationExp({ onSubmit }) {
 
   return (
     <form onSubmit={(e) => submitInformation(e)}>
-      <h1>Educational Experience</h1>
+      <h1 className="info-container-title">Educational Experience</h1>
       {isSubmit ? (
-        <button onClick={(e) => setIsSubmit(false)}>Edit</button>
+        <>
+          <button onClick={(e) => setIsSubmit(false)}>Edit</button>
+        </>
       ) : (
         <>
-          <label>
-            School name:
+          <div>
+            <label>School name:</label>
             <input
               type="text"
               value={schoolName}
               onChange={(e) => setSchoolName(e.target.value)}
+              required
             />
-          </label>
-          <label>
-            Title of study:
+          </div>
+          <div>
+            <label>Title of study:</label>
             <input
               type="text"
               value={studyTitle}
               onChange={(e) => setStudyTitle(e.target.value)}
+              required
             />
-          </label>
-          <label>
-            Study conclusion:
+          </div>
+          <div>
+            <label>Study conclusion:</label>
             <input
               type="date"
               pattern="\d{4}-\d{2}-\d{2}"
@@ -44,8 +48,9 @@ export default function FormEducationExp({ onSubmit }) {
               title="Enter a date in the format YYYY-MM-DD"
               value={studyDate}
               onChange={(e) => setStudyDate(e.target.value)}
+              required
             />
-          </label>
+          </div>
           <button>Submit</button>
         </>
       )}

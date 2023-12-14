@@ -14,35 +14,38 @@ export default function FormGeneralInfo({ onSubmit }) {
 
   return (
     <form onSubmit={(e) => submitInformation(e)}>
-      <h1>General information</h1>
+      <h1 className="info-container-title">General information</h1>
       {isSubmit ? (
         <button onClick={(e) => setIsSubmit(false)}>Edit</button>
       ) : (
         <>
-          <label>
-            Full name:
+          <div>
+            <label>Full name:</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
-          </label>
-          <label>
-            Email:
+          </div>
+          <div>
+            <label>Email:</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
-          </label>
-          <label>
-            Phone number:
+          </div>
+          <div>
+            <label>Phone number:</label>
             <input
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
+              required
             />
-          </label>
+          </div>
           <button>Submit</button>
         </>
       )}
